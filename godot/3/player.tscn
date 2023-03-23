@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds83abcvvqijd"]
+
+[ext_resource type="PackedScene" uid="uid://cxfmav2jbcp2n" path="res://godot_chan_stealth.tscn" id="1_2nk4a"]
+[ext_resource type="Script" path="res://camera.gd" id="2_5gduk"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_skxiq"]
+height = 1.51409
+
+[node name="player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.221119, 0)
+
+[node name="mesh" type="Node3D" parent="."]
+
+[node name="Godot_Chan_Stealth2" parent="mesh" instance=ExtResource("1_2nk4a")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.876437, 0, 0, 0, 0.876437, 0, 0, 0, 0.876437, -0.0254413, 0.748922, 0.0542429)
+shape = SubResource("CylinderShape3D_skxiq")
+
+[node name="CamRoot" type="Node3D" parent="."]
+script = ExtResource("2_5gduk")
+
+[node name="h" type="Node3D" parent="CamRoot"]
+
+[node name="v" type="Node3D" parent="CamRoot/h"]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CamRoot/h/v"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.88233, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CamRoot/h/v/SpringArm3D"]
+transform = Transform3D(-0.994755, -0.0314369, 0.0973318, -0.00671411, 0.969613, 0.244552, -0.102062, 0.242616, -0.964739, -0.0271933, -0.0400907, -2.41473)

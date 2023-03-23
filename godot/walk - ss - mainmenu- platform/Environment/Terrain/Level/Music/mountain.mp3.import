@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mountain.mp3-ccbefba876ac7b7267b9bdc85a5f5a1c.mp3str"
+
+[deps]
+
+source_file="res://Environment/Terrain/Level/Music/mountain.mp3"
+dest_files=[ "res://.import/mountain.mp3-ccbefba876ac7b7267b9bdc85a5f5a1c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

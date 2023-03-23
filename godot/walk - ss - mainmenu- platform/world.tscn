@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Level/Terrain.glb" type="PackedScene" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+
+[node name="Node" type="Node"]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
+transform = Transform( 124.995, 0, 0, 0, 2.37049, 0, 0, 0, 124.995, 0, 0, 0 )
+mesh = SubResource( 1 )
+
+[node name="Terrain" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3443, 20.0999, 10.8638 )

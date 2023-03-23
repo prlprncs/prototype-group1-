@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Spatial
+
+
+	
+"
+
+[sub_resource type="CapsuleMesh" id=2]
+
+[node name="npc" type="Spatial"]
+script = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = 228.0
+margin_top = 25.0
+margin_right = 297.0
+margin_bottom = 39.0
+text = "interact (e)"
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )

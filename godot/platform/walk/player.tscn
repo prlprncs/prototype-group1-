@@ -1,0 +1,297 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://Player/Godot_Chan_Stealth.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Camera.gd" type="Script" id=2]
+[ext_resource path="res://player.gd" type="Script" id=3]
+[ext_resource path="res://Animations/roll.tres" type="Animation" id=4]
+[ext_resource path="res://Animations/walk_forward-loop.tres" type="Animation" id=5]
+[ext_resource path="res://Animations/walk_back_right-loop.tres" type="Animation" id=6]
+[ext_resource path="res://Animations/walk_forward_left-loop.tres" type="Animation" id=7]
+[ext_resource path="res://Animations/walk_forward_right-loop.tres" type="Animation" id=8]
+[ext_resource path="res://Animations/walk_back_left-loop.tres" type="Animation" id=9]
+[ext_resource path="res://Animations/run_forward-loop.tres" type="Animation" id=10]
+[ext_resource path="res://Animations/walk_backward-loop.tres" type="Animation" id=11]
+[ext_resource path="res://Animations/idle-loop.tres" type="Animation" id=12]
+[ext_resource path="res://Animations/walk_right-loop.tres" type="Animation" id=13]
+[ext_resource path="res://Animations/walk_left-loop.tres" type="Animation" id=14]
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "run_forward-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "walk_forward-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "roll"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "idle-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "idle-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "walk_forward-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "walk_backward-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "walk_right-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "walk_left-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "walk_forward_right-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "walk_back_right-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "walk_forward_left-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "walk_back_left-loop"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=15]
+blend_point_0/node = SubResource( 6 )
+blend_point_0/pos = Vector2( 0, 0 )
+blend_point_1/node = SubResource( 7 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 8 )
+blend_point_2/pos = Vector2( 0, -0.9 )
+blend_point_3/node = SubResource( 9 )
+blend_point_3/pos = Vector2( 1, 0 )
+blend_point_4/node = SubResource( 10 )
+blend_point_4/pos = Vector2( -1, 0 )
+blend_point_5/node = SubResource( 11 )
+blend_point_5/pos = Vector2( 1, 1 )
+blend_point_6/node = SubResource( 12 )
+blend_point_6/pos = Vector2( 1, -1 )
+blend_point_7/node = SubResource( 13 )
+blend_point_7/pos = Vector2( -1, 1 )
+blend_point_8/node = SubResource( 14 )
+blend_point_8/pos = Vector2( -1, -0.9 )
+max_space = Vector2( 1, 1.01 )
+
+[sub_resource type="AnimationNodeBlend3" id=16]
+
+[sub_resource type="AnimationNodeTimeScale" id=17]
+
+[sub_resource type="AnimationNodeTransition" id=18]
+input_count = 2
+xfade_time = 0.1
+input_0/name = "aiming"
+input_0/auto_advance = false
+input_1/name = "not-aiming"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeOneShot" id=19]
+
+[sub_resource type="AnimationNodeTimeScale" id=20]
+
+[sub_resource type="AnimationNodeTimeScale" id=21]
+
+[sub_resource type="AnimationNodeTimeScale" id=22]
+
+[sub_resource type="AnimationNodeBlendTree" id=23]
+graph_offset = Vector2( -149.296, 361.017 )
+nodes/Animation/node = SubResource( 5 )
+nodes/Animation/position = Vector2( -346.667, 266.667 )
+"nodes/Animation 2/node" = SubResource( 2 )
+"nodes/Animation 2/position" = Vector2( -586.667, 480 )
+"nodes/Animation 3/node" = SubResource( 3 )
+"nodes/Animation 3/position" = Vector2( -613.333, 320 )
+"nodes/Animation 4/node" = SubResource( 4 )
+"nodes/Animation 4/position" = Vector2( -80, 533.333 )
+nodes/BlendSpace2D/node = SubResource( 15 )
+nodes/BlendSpace2D/position = Vector2( -293.333, 80 )
+nodes/Iwr_blend/node = SubResource( 16 )
+nodes/Iwr_blend/position = Vector2( -106.667, 320 )
+nodes/TimeScale/node = SubResource( 17 )
+nodes/TimeScale/position = Vector2( -80, 160 )
+nodes/aim_transition/node = SubResource( 18 )
+nodes/aim_transition/position = Vector2( 80, 213.333 )
+nodes/output/position = Vector2( 506.667, 213.333 )
+nodes/roll/node = SubResource( 19 )
+nodes/roll/position = Vector2( 293.333, 213.333 )
+nodes/roll_scale/node = SubResource( 20 )
+nodes/roll_scale/position = Vector2( 106.667, 373.333 )
+nodes/run_scale/node = SubResource( 21 )
+nodes/run_scale/position = Vector2( -373.333, 533.333 )
+nodes/walk-scale/node = SubResource( 22 )
+nodes/walk-scale/position = Vector2( -346.667, 400 )
+node_connections = [ "output", 0, "roll", "roll", 0, "aim_transition", "roll", 1, "roll_scale", "Iwr_blend", 0, "Animation", "Iwr_blend", 1, "walk-scale", "Iwr_blend", 2, "run_scale", "walk-scale", 0, "Animation 3", "aim_transition", 0, "TimeScale", "aim_transition", 1, "Iwr_blend", "TimeScale", 0, "BlendSpace2D", "roll_scale", 0, "Animation 4", "run_scale", 0, "Animation 2" ]
+
+[sub_resource type="CylinderShape" id=1]
+
+[node name="player" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0486734, 0 )
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../mesh/Godot_Chan_Stealth")
+anims/idle-loop = ExtResource( 12 )
+anims/roll = ExtResource( 4 )
+anims/run_forward-loop = ExtResource( 10 )
+anims/walk_back_left-loop = ExtResource( 9 )
+anims/walk_back_right-loop = ExtResource( 6 )
+anims/walk_backward-loop = ExtResource( 11 )
+anims/walk_forward-loop = ExtResource( 5 )
+anims/walk_forward_left-loop = ExtResource( 7 )
+anims/walk_forward_right-loop = ExtResource( 8 )
+anims/walk_left-loop = ExtResource( 14 )
+anims/walk_right-loop = ExtResource( 13 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 23 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/BlendSpace2D/blend_position = Vector2( -0.00172412, 0.147327 )
+parameters/Iwr_blend/blend_amount = -0.24
+parameters/TimeScale/scale = 1.0
+parameters/aim_transition/current = 0
+parameters/roll/active = false
+parameters/roll_scale/scale = 1.0
+parameters/run_scale/scale = 1.0
+parameters/walk-scale/scale = 1.0
+
+[node name="mesh" type="Spatial" parent="."]
+
+[node name="Godot_Chan_Stealth" parent="mesh" instance=ExtResource( 1 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.426265, 0, 0, 0, 0.676877, 0, 0, 0, 0.392205, 0.0430104, 0.849158, 0.0990475 )
+shape = SubResource( 1 )
+
+[node name="CamRoot" type="Spatial" parent="."]
+script = ExtResource( 2 )
+
+[node name="h" type="Spatial" parent="CamRoot"]
+
+[node name="v" type="Spatial" parent="CamRoot/h"]
+
+[node name="camera" type="ClippedCamera" parent="CamRoot/h/v"]
+transform = Transform( -0.999601, 0, 0.0282531, 0, 1, 0, -0.0282531, 0, -0.999601, 0.00500393, 1.57768, -2.72427 )
+process_mode = 1
+
+[node name="Control" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="W" type="ColorRect" parent="Control"]
+margin_left = 59.0
+margin_top = 19.0
+margin_right = 99.0
+margin_bottom = 59.0
+color = Color( 0.537255, 0.0627451, 0.0627451, 1 )
+
+[node name="Label" type="Label" parent="Control/W"]
+margin_left = 1.0
+margin_top = 14.0
+margin_right = 41.0
+margin_bottom = 28.0
+text = "W"
+align = 1
+max_lines_visible = 1
+
+[node name="S" type="ColorRect" parent="Control"]
+margin_left = 59.0
+margin_top = 69.0
+margin_right = 99.0
+margin_bottom = 109.0
+color = Color( 0.537255, 0.0627451, 0.0627451, 1 )
+
+[node name="Label" type="Label" parent="Control/S"]
+margin_top = 12.0
+margin_right = 40.0
+margin_bottom = 26.0
+text = "S"
+align = 1
+
+[node name="D" type="ColorRect" parent="Control"]
+margin_left = 117.0
+margin_top = 54.0
+margin_right = 157.0
+margin_bottom = 94.0
+color = Color( 0.537255, 0.0627451, 0.0627451, 1 )
+
+[node name="Label" type="Label" parent="Control/D"]
+margin_left = 1.0
+margin_top = 13.0
+margin_right = 41.0
+margin_bottom = 27.0
+text = "D"
+align = 1
+valign = 1
+
+[node name="A" type="ColorRect" parent="Control"]
+margin_left = 6.0
+margin_top = 51.0
+margin_right = 46.0
+margin_bottom = 91.0
+color = Color( 0.537255, 0.0627451, 0.0627451, 1 )
+
+[node name="Label" type="Label" parent="Control/A"]
+margin_left = 1.0
+margin_top = 14.0
+margin_right = 41.0
+margin_bottom = 28.0
+text = "A"
+align = 1
+
+[node name="Space" type="ColorRect" parent="Control"]
+margin_left = 403.0
+margin_top = 57.0
+margin_right = 443.0
+margin_bottom = 97.0
+rect_scale = Vector2( 5.13331, 0.910638 )
+color = Color( 0.537255, 0.0627451, 0.0627451, 1 )
+
+[node name="Label" type="Label" parent="Control/Space"]
+margin_left = 11.104
+margin_top = 7.68692
+margin_right = 51.104
+margin_bottom = 21.6869
+rect_scale = Vector2( 0.483907, 1.3716 )
+text = "Space"
+
+[node name="aim" type="ColorRect" parent="Control"]
+margin_left = 341.0
+margin_top = 56.0
+margin_right = 381.0
+margin_bottom = 96.0
+color = Color( 0.537255, 0.0627451, 0.0627451, 1 )
+
+[node name="Label" type="Label" parent="Control/aim"]
+margin_top = 15.0
+margin_right = 40.0
+margin_bottom = 29.0
+text = "Aim"
+align = 1
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = 8.0
+margin_top = 140.0
+margin_right = 48.0
+margin_bottom = 154.0
+
+[node name="Label2" type="Label" parent="Control"]
+margin_left = 9.0
+margin_top = 164.0
+margin_right = 49.0
+margin_bottom = 178.0
+
+[node name="Label3" type="Label" parent="Control"]
+margin_left = 9.0
+margin_top = 198.0
+margin_right = 49.0
+margin_bottom = 212.0
+
+[node name="Label4" type="Label" parent="Control"]
+margin_left = 9.0
+margin_top = 179.0
+margin_right = 49.0
+margin_bottom = 193.0
